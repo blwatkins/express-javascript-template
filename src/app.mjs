@@ -25,6 +25,8 @@ import helmet from 'helmet';
 
 import { rateLimit } from 'express-rate-limit';
 
+import { REQUEST_LOGGING_ENABLED } from './constants.mjs';
+
 export const APP = express();
 
 const LIMITER = rateLimit({
@@ -47,13 +49,15 @@ APP.use(express.json({ limit: '1mb' }));
 APP.use(LIMITER);
 APP.use(express.static('public'));
 
-APP.use((request, response, next) => {
-    response.on('finish', () => {
-        const baseMessage = `Request received: ${request.method} ${request.originalUrl || request.url}`;
-        console.log(response.statusCode === 404 ? `${baseMessage} [404 - Not Found]` : baseMessage);
+if (REQUEST_LOGGING_ENABLED) {
+    APP.use((request, response, next) => {
+        response.on('finish', () => {
+            const baseMessage = `Request received: ${request.method} ${request.originalUrl || request.url}`;
+            console.log(response.statusCode === 404 ? `${baseMessage} [404 - Not Found]` : baseMessage);
+        });
+        next();
     });
-    next();
-});
+}
 
 APP.get('/', (request, response) => {
     response.send('Hello, world!');

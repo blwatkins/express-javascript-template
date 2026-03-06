@@ -18,9 +18,12 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { APP } from './app.mjs';
-import { PORT } from './constants.mjs';
+/**
+ * @type {number}
+ */
+export const PORT = Number.parseInt(process.env.PORT, 10) || 3000;
 
-APP.listen(PORT, () => {
-    console.log(`Application server is running on port ${PORT}`);
-});
+/**
+ * @type {boolean}
+ */
+export const REQUEST_LOGGING_ENABLED = process.env.REQUEST_LOGGING_ENABLED === 'true' || false;
