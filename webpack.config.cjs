@@ -32,7 +32,6 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.cjs', '.mjs']
     },
-    devtool: 'source-map',
     optimization: {
         emitOnErrors: false
     }
