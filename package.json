@@ -1,0 +1,20 @@
+{
+  "name": "express-javascript-template",
+  "version": "1.0.0",
+  "description": "A template project for using [Express](https://expressjs.com/) with [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [webpack](https://webpack.js.org/) in the [Node.js](https://nodejs.org/en) runtime environment.",
+  "homepage": "https://github.com/blwatkins/express-javascript-template#readme",
+  "bugs": {
+    "url": "https://github.com/blwatkins/express-javascript-template/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blwatkins/express-javascript-template.git"
+  },
+  "license": "MIT",
+  "author": "brittni watkins",
+  "type": "module",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
