@@ -1,0 +1,10 @@
+*.DS_Store
+
+# JetBrains IDEs
+.idea/
+
+# Node.js and npm
+node_modules/
+
+# compiling, bundling, testing, and coverage output
+public/dist/

@@ -1,0 +1,53 @@
+{
+  "name": "express-javascript-template",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "description": "A template project for using Express with JavaScript and webpack in the Node.js runtime environment.",
+  "author": {
+    "name": "brittni watkins",
+    "url": "https://blwatkins.github.io/"
+  },
+  "homepage": "https://github.com/blwatkins/express-javascript-template#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blwatkins/express-javascript-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blwatkins/express-javascript-template/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24"
+  },
+  "scripts": {
+    "lint:client": "eslint -c eslint.config.client.mjs ./src-client",
+    "lint:server": "eslint -c eslint.config.server.mjs .",
+    "build": "webpack --mode production",
+    "build:watch": "webpack --mode production --watch",
+    "build:dev": "webpack --mode development",
+    "build:dev:watch": "webpack --mode development --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development --watch & nodemon src/main.mjs",
+    "start": "npm run build && node src/main.mjs"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.3.0",
+    "helmet": "^8.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "eslint": "^10.0.2",
+    "eslint-plugin-es-x": "^9.5.0",
+    "eslint-plugin-n": "^17.24.0",
+    "eslint-plugin-security": "^4.0.0",
+    "globals": "^17.4.0",
+    "nodemon": "^3.1.14",
+    "webpack": "^5.105.4",
+    "webpack-cli": "^6.0.1"
+  }
+}
