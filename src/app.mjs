@@ -48,7 +48,7 @@ const CORS_OPTIONS = {
     origin: process.env.ALLOWED_ORIGINS?.split(',') ?? false,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    maxAge: SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY,
+    maxAge: SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY
 };
 
 APP.disable('x-powered-by');
