@@ -70,8 +70,8 @@ APP.use(express.static(path.join(__dirname, '..', 'public')));
 if (REQUEST_LOGGING_ENABLED) {
     APP.use((request, response, next) => {
         response.on('finish', () => {
-            const path = (request.baseUrl || '') + (request.path || '');
-            const message = `Request received: ${request.method} ${path} [status ${response.statusCode}]`;
+            const requestPath = (request.baseUrl || '') + (request.path || '');
+            const message = `Request received: ${request.method} ${requestPath} [status ${response.statusCode}]`;
             console.log(message);
         });
         next();
