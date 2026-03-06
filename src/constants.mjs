@@ -26,4 +26,4 @@ export const PORT = Number.parseInt(process.env.PORT, 10) || 3000;
 /**
  * @type {boolean}
  */
-export const REQUEST_LOGGING_ENABLED = process.env.REQUEST_LOGGING_ENABLED === 'true' || false;
+export const REQUEST_LOGGING_ENABLED = process.env.REQUEST_LOGGING_ENABLED === 'true';
