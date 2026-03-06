@@ -38,6 +38,26 @@ function getPortNumber() {
 /**
  * @type {number}
  */
+export const MILLIS_PER_SECOND = 1_000;
+
+/**
+ * @type {number}
+ */
+export const SECONDS_PER_MINUTE = 60;
+
+/**
+ * @type {number}
+ */
+export const MINUTES_PER_HOUR = 60;
+
+/**
+ * @type {number}
+ */
+export const HOURS_PER_DAY = 24;
+
+/**
+ * @type {number}
+ */
 export const PORT = getPortNumber();
 
 /**
