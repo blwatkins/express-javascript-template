@@ -60,5 +60,5 @@ if (REQUEST_LOGGING_ENABLED) {
 }
 
 APP.get('/', (request, response) => {
-    response.send('Hello, world!');
+    response.render('index');
 });
