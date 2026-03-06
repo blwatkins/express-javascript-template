@@ -28,28 +28,42 @@ import helmet from 'helmet';
 
 import { rateLimit } from 'express-rate-limit';
 
-import { REQUEST_LOGGING_ENABLED } from './constants.mjs';
+import {
+    HOURS_PER_DAY,
+    MILLIS_PER_SECOND,
+    MINUTES_PER_HOUR,
+    REQUEST_LOGGING_ENABLED,
+    SECONDS_PER_MINUTE,
+    TRUST_PROXY
+} from './constants.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const APP = express();
 
 const LIMITER = rateLimit({
-    windowMs: 1_000 * 60,
+    windowMs: MILLIS_PER_SECOND * SECONDS_PER_MINUTE,
     limit: 100,
     standardHeaders: 'draft-8',
     legacyHeaders: false,
     ipv6Subnet: 56
 });
 
+const CORS_OPTIONS = {
+    origin: process.env.ALLOWED_ORIGINS?.split(',') ?? false,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    maxAge: SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY
+};
+
 APP.disable('x-powered-by');
 
-APP.set('trust proxy', false);
+APP.set('trust proxy', TRUST_PROXY);
 APP.set('views', path.join(__dirname, '..', 'views'));
 APP.set('view engine', 'ejs');
 
 APP.use(helmet());
-APP.use(cors());
+APP.use(cors(CORS_OPTIONS));
 APP.use(express.json({ limit: '1mb' }));
 APP.use(LIMITER);
 APP.use(express.static(path.join(__dirname, '..', 'public')));

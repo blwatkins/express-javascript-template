@@ -18,10 +18,9 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/**
- * @type {number}
- */
 const DEFAULT_PORT = 3000;
+const MIN_PORT = 0;
+const MAX_PORT = 65535;
 
 /**
  * @returns {number}
@@ -29,12 +28,52 @@ const DEFAULT_PORT = 3000;
 function getPortNumber() {
     let port = Number.parseInt(process.env.PORT, 10);
 
-    if (Number.isNaN(port)) {
+    if (Number.isNaN(port) || port < MIN_PORT || port > MAX_PORT) {
         return DEFAULT_PORT;
-    } else {
-        return port;
     }
+
+    return port;
 }
+
+/**
+ * Get the trust proxy setting from environment variables.
+ *
+ * @return {number|boolean} `true` for 'true', a number for valid numeric strings, or `false` for any other value or if not set.
+ */
+function getTrustProxy() {
+    const trustProxy = process.env.TRUST_PROXY;
+    const digitsRegex = /^\d+$/;
+
+    if (trustProxy === 'true') {
+        return true;
+    }
+
+    if (typeof trustProxy === 'string' && digitsRegex.test(trustProxy)) {
+        return Number.parseInt(trustProxy, 10);
+    }
+
+    return false;
+}
+
+/**
+ * @type {number}
+ */
+export const MILLIS_PER_SECOND = 1_000;
+
+/**
+ * @type {number}
+ */
+export const SECONDS_PER_MINUTE = 60;
+
+/**
+ * @type {number}
+ */
+export const MINUTES_PER_HOUR = 60;
+
+/**
+ * @type {number}
+ */
+export const HOURS_PER_DAY = 24;
 
 /**
  * @type {number}
@@ -45,3 +84,8 @@ export const PORT = getPortNumber();
  * @type {boolean}
  */
 export const REQUEST_LOGGING_ENABLED = process.env.REQUEST_LOGGING_ENABLED === 'true';
+
+/**
+ * @type {number|boolean}
+ */
+export const TRUST_PROXY = getTrustProxy();
