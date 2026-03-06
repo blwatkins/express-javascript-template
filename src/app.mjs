@@ -18,15 +18,14 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { fileURLToPath } from 'url';
-import path from 'path';
-
 import express from 'express';
 
 import cors from 'cors';
 import helmet from 'helmet';
+import path from 'path';
 
 import { rateLimit } from 'express-rate-limit';
+import { fileURLToPath } from 'url';
 
 import {
     HOURS_PER_DAY,
@@ -37,9 +36,9 @@ import {
     TRUST_PROXY
 } from './constants.mjs';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
 export const APP = express();
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const LIMITER = rateLimit({
     windowMs: MILLIS_PER_SECOND * SECONDS_PER_MINUTE,
