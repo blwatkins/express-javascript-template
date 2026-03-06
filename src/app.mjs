@@ -52,8 +52,9 @@ APP.use(express.static('public'));
 if (REQUEST_LOGGING_ENABLED) {
     APP.use((request, response, next) => {
         response.on('finish', () => {
-            const baseMessage = `Request received: ${request.method} ${request.originalUrl || request.url}`;
-            console.log(response.statusCode === 404 ? `${baseMessage} [404 - Not Found]` : baseMessage);
+            const path = (request.baseUrl || '') + (request.path || '');
+            const message = `Request received: ${request.method} ${path} [status ${response.statusCode}]`;
+            console.log(message);
         });
         next();
     });
