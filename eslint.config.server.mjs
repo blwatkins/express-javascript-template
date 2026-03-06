@@ -33,6 +33,7 @@ export default defineConfig([
     globalIgnores([
         '_compiled/**',
         '_dist/**',
+        'public/**',
         'src-client/**'
     ]),
     {
