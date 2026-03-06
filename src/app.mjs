@@ -18,6 +18,9 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { fileURLToPath } from 'url';
+import path from 'path';
+
 import express from 'express';
 
 import cors from 'cors';
@@ -26,6 +29,8 @@ import helmet from 'helmet';
 import { rateLimit } from 'express-rate-limit';
 
 import { REQUEST_LOGGING_ENABLED } from './constants.mjs';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const APP = express();
 
@@ -40,14 +45,14 @@ const LIMITER = rateLimit({
 APP.disable('x-powered-by');
 
 APP.set('trust proxy', false);
-APP.set('views', 'views');
+APP.set('views', path.join(__dirname, '..', 'views'));
 APP.set('view engine', 'ejs');
 
 APP.use(helmet());
 APP.use(cors());
 APP.use(express.json({ limit: '1mb' }));
 APP.use(LIMITER);
-APP.use(express.static('public'));
+APP.use(express.static(path.join(__dirname, '..', 'public')));
 
 if (REQUEST_LOGGING_ENABLED) {
     APP.use((request, response, next) => {
