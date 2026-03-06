@@ -30,8 +30,8 @@ function getAllowedOrigins() {
 
     if (typeof allowedOriginsEnv === 'string') {
         const allowedOrigins = allowedOriginsEnv.split(',')
-            .map((token) => token.trim())
-            .filter((token) => token.length > 0);
+            .map(token => token.trim())
+            .filter(token => token.length > 0);
 
         if (allowedOrigins.length > 0) {
             return allowedOrigins;
@@ -97,7 +97,7 @@ export const HOURS_PER_DAY = 24;
 /**
  * @type {string[]|boolean}
  */
-export const ALLOWED_ORIGINS = getAllowedOrigins()
+export const ALLOWED_ORIGINS = getAllowedOrigins();
 
 /**
  * @type {number}
