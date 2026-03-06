@@ -21,7 +21,25 @@
 /**
  * @type {number}
  */
-export const PORT = Number.parseInt(process.env.PORT, 10) || 3000;
+const DEFAULT_PORT = 3000;
+
+/**
+ * @returns {number}
+ */
+function getPortNumber() {
+    let port = Number.parseInt(process.env.PORT, 10);
+
+    if (Number.isNaN(port)) {
+        return DEFAULT_PORT;
+    } else {
+        return port;
+    }
+}
+
+/**
+ * @type {number}
+ */
+export const PORT = getPortNumber();
 
 /**
  * @type {boolean}
