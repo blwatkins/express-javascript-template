@@ -18,10 +18,9 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/**
- * @type {number}
- */
 const DEFAULT_PORT = 3000;
+const MIN_PORT = 0;
+const MAX_PORT = 65535;
 
 /**
  * @returns {number}
@@ -29,11 +28,11 @@ const DEFAULT_PORT = 3000;
 function getPortNumber() {
     let port = Number.parseInt(process.env.PORT, 10);
 
-    if (Number.isNaN(port)) {
+    if (Number.isNaN(port) || port < MIN_PORT || port > MAX_PORT) {
         return DEFAULT_PORT;
-    } else {
-        return port;
     }
+
+    return port;
 }
 
 /**
