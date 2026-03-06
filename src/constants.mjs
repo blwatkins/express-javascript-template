@@ -23,6 +23,25 @@ const MIN_PORT = 0;
 const MAX_PORT = 65535;
 
 /**
+ * @returns {string[]|boolean}
+ */
+function getAllowedOrigins() {
+    const allowedOriginsEnv = process.env.ALLOWED_ORIGINS;
+
+    if (typeof allowedOriginsEnv === 'string') {
+        const allowedOrigins = allowedOriginsEnv.split(',')
+            .map((token) => token.trim())
+            .filter((token) => token.length > 0);
+
+        if (allowedOrigins.length > 0) {
+            return allowedOrigins;
+        }
+    }
+
+    return false;
+}
+
+/**
  * @returns {number}
  */
 function getPortNumber() {
@@ -74,6 +93,11 @@ export const MINUTES_PER_HOUR = 60;
  * @type {number}
  */
 export const HOURS_PER_DAY = 24;
+
+/**
+ * @type {string[]|boolean}
+ */
+export const ALLOWED_ORIGINS = getAllowedOrigins()
 
 /**
  * @type {number}
