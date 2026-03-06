@@ -18,6 +18,9 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import { fileURLToPath } from 'url';
+import path from 'path';
+
 import express from 'express';
 
 import cors from 'cors';
@@ -33,6 +36,8 @@ import {
     SECONDS_PER_MINUTE,
     TRUST_PROXY
 } from './constants.mjs';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const APP = express();
 
@@ -54,14 +59,14 @@ const CORS_OPTIONS = {
 APP.disable('x-powered-by');
 
 APP.set('trust proxy', TRUST_PROXY);
-APP.set('views', 'views');
+APP.set('views', path.join(__dirname, '..', 'views'));
 APP.set('view engine', 'ejs');
 
 APP.use(helmet());
 APP.use(cors(CORS_OPTIONS));
 APP.use(express.json({ limit: '1mb' }));
 APP.use(LIMITER);
-APP.use(express.static('public'));
+APP.use(express.static(path.join(__dirname, '..', 'public')));
 
 if (REQUEST_LOGGING_ENABLED) {
     APP.use((request, response, next) => {
