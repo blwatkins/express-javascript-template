@@ -36,6 +36,26 @@ function getPortNumber() {
 }
 
 /**
+ * Get the trust proxy setting from environment variables.
+ *
+ * @return {number|boolean} `true` for 'true', a number for valid numeric strings, or `false` for any other value or if not set.
+ */
+function getTrustProxy() {
+    const trustProxy = process.env.TRUST_PROXY;
+    const digitsRegex = /^\d+$/;
+
+    if (trustProxy === 'true') {
+        return true;
+    }
+
+    if (typeof trustProxy === 'string' && digitsRegex.test(trustProxy)) {
+        return Number.parseInt(trustProxy, 10);
+    }
+
+    return false;
+}
+
+/**
  * @type {number}
  */
 export const MILLIS_PER_SECOND = 1_000;
@@ -64,3 +84,8 @@ export const PORT = getPortNumber();
  * @type {boolean}
  */
 export const REQUEST_LOGGING_ENABLED = process.env.REQUEST_LOGGING_ENABLED === 'true';
+
+/**
+ * @type {number|boolean}
+ */
+export const TRUST_PROXY = getTrustProxy();

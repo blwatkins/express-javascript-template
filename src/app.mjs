@@ -30,7 +30,8 @@ import {
     MILLIS_PER_SECOND,
     MINUTES_PER_HOUR,
     REQUEST_LOGGING_ENABLED,
-    SECONDS_PER_MINUTE
+    SECONDS_PER_MINUTE,
+    TRUST_PROXY
 } from './constants.mjs';
 
 export const APP = express();
@@ -52,7 +53,7 @@ const CORS_OPTIONS = {
 
 APP.disable('x-powered-by');
 
-APP.set('trust proxy', false);
+APP.set('trust proxy', TRUST_PROXY);
 APP.set('views', 'views');
 APP.set('view engine', 'ejs');
 
