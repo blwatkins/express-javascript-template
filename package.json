@@ -20,7 +20,6 @@
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24"
   },
-  "main": "src/main.js",
   "scripts": {
     "lint:client": "eslint -c eslint.config.client.mjs ./src-client",
     "lint:server": "eslint -c eslint.config.server.mjs .",
