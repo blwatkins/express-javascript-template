@@ -1,14 +1,6 @@
 # Express JavaScript Template
 
-A template project for using
-[Express](https://expressjs.com/)
-with
-[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-and
-[webpack](https://webpack.js.org/)
-in the
-[Node.js](https://nodejs.org/en)
-runtime environment.
+A template project for using [Express](https://expressjs.com/) with [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [webpack](https://webpack.js.org/) in the [Node.js](https://nodejs.org/en) runtime environment.
 
 ## Repository Status Badges
 
