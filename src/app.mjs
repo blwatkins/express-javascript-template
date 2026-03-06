@@ -20,7 +20,40 @@
 
 import express from 'express';
 
+import cors from 'cors';
+import helmet from 'helmet';
+
+import { rateLimit } from 'express-rate-limit';
+
 export const APP = express();
+
+const LIMITER = rateLimit({
+    windowMs: 1_000 * 60,
+    limit: 100,
+    standardHeaders: 'draft-8',
+    legacyHeaders: false,
+    ipv6Subnet: 56
+});
+
+APP.disable('x-powered-by');
+
+APP.set('trust proxy', false);
+APP.set('views', 'views');
+APP.set('view engine', 'ejs');
+
+APP.use(helmet());
+APP.use(cors());
+APP.use(express.json({ limit: '1mb' }));
+APP.use(LIMITER);
+APP.use(express.static('public'));
+
+APP.use((request, response, next) => {
+    response.on('finish', () => {
+        const baseMessage = `Request received: ${request.method} ${request.originalUrl || request.url}`;
+        console.log(response.statusCode === 404 ? `${baseMessage} [404 - Not Found]` : baseMessage);
+    });
+    next();
+});
 
 APP.get('/', (request, response) => {
     response.send('Hello, world!');
