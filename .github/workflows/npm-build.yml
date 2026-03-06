@@ -32,7 +32,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm ci
-      - run: npm run lint:server
       - run: npm run lint:client
+      - run: npm run lint:server
       - run: npm run build:dev
       - run: npm run build
