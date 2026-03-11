@@ -1,6 +1,6 @@
 {
   "name": "express-javascript-template",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT",
   "private": true,
   "description": "A template project for using Express with JavaScript and webpack in the Node.js runtime environment.",
