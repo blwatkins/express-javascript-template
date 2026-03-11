@@ -23,12 +23,14 @@
   "scripts": {
     "lint:client": "eslint -c eslint.config.client.mjs ./src-client",
     "lint:server": "eslint -c eslint.config.server.mjs .",
+    "lint:all": "npm run lint:client && npm run lint:server",
     "build": "webpack --mode production",
     "build:watch": "webpack --mode production --watch",
     "build:dev": "webpack --mode development",
     "build:dev:watch": "webpack --mode development --watch",
+    "build:all": "npm run build && npm run build:dev",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --mode development --watch & nodemon src/main.mjs",
+    "serve": "webpack --mode development --watch & nodemon src/main.mjs",
     "start": "npm run build && node src/main.mjs"
   },
   "dependencies": {
