@@ -28,7 +28,7 @@
     "build:watch": "webpack --mode production --watch",
     "build:dev": "webpack --mode development",
     "build:dev:watch": "webpack --mode development --watch",
-    "build:all": "npm run build:dev && npm run build",
+    "build:check": "npm run build:dev && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "nodemon src/main.mjs",
     "start": "npm run build && node src/main.mjs"
