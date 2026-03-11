@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024-2026 brittni and the polar bear LLC.
+ * Copyright (C) 2024-2026 Brittni Watkins.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"),
@@ -29,8 +29,6 @@ import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig([
     globalIgnores([
-        '_compiled/**',
-        '_dist/**',
         'src/**'
     ]),
     {
