@@ -16,9 +16,9 @@ npm install
 
 ## GitHub Workflows
 
-This template contains GitHub workflows designed to update project dependencies and scan the code for security vulnerabilities every month.
+This template contains GitHub workflows for code scanning, dependency management, and npm script automation.
 
-To learn more about Dependabot configurations, visit the [GitHub Dependabot documentation](https://docs.github.com/en/code-security/dependabot).
+To learn more about Dependabot configurations, visit the [GitHub Dependabot documentation](https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies).
 
 To learn more about CodeQL configurations, visit the [GitHub CodeQL documentation](https://codeql.github.com/docs/).
 
