@@ -2,7 +2,7 @@
   "name": "express-javascript-template",
   "license": "MIT",
   "private": true,
-  "description": "A template project for using Express with JavaScript and webpack in the Node.js runtime environment.",
+  "description": "A template project for using Express with JavaScript and webpack.",
   "author": {
     "name": "Brittni Watkins",
     "url": "https://blwatkins.github.io/"
