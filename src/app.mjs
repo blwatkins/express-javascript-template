@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2026 Brittni Watkins.
+ * Copyright (c) 2026 Brittni Watkins.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"),
@@ -37,11 +37,11 @@ import {
     TRUST_PROXY
 } from './constants.mjs';
 
-export const APP = express();
+export const app = express();
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const LIMITER = rateLimit({
+const limiter = rateLimit({
     windowMs: MILLIS_PER_SECOND * SECONDS_PER_MINUTE,
     limit: 100,
     standardHeaders: 'draft-8',
@@ -49,27 +49,27 @@ const LIMITER = rateLimit({
     ipv6Subnet: 56
 });
 
-const CORS_OPTIONS = {
+const corsOptions = {
     origin: ALLOWED_ORIGINS,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     maxAge: SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY
 };
 
-APP.disable('x-powered-by');
+app.disable('x-powered-by');
 
-APP.set('trust proxy', TRUST_PROXY);
-APP.set('views', path.join(__dirname, '..', 'views'));
-APP.set('view engine', 'ejs');
+app.set('trust proxy', TRUST_PROXY);
+app.set('views', path.join(__dirname, '..', 'views'));
+app.set('view engine', 'ejs');
 
-APP.use(helmet());
-APP.use(cors(CORS_OPTIONS));
-APP.use(express.json({ limit: '1mb' }));
-APP.use(LIMITER);
-APP.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(helmet());
+app.use(cors(corsOptions));
+app.use(express.json({ limit: '1mb' }));
+app.use(limiter);
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 if (REQUEST_LOGGING_ENABLED) {
-    APP.use((request, response, next) => {
+    app.use((request, response, next) => {
         response.on('finish', () => {
             const requestPath = (request.baseUrl || '') + (request.path || '');
             const message = `Request received: ${request.method} ${requestPath} [status ${response.statusCode}]`;
@@ -79,6 +79,6 @@ if (REQUEST_LOGGING_ENABLED) {
     });
 }
 
-APP.get('/', (request, response) => {
+app.get('/', (request, response) => {
     response.render('index');
 });

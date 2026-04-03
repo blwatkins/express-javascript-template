@@ -1,11 +1,10 @@
 {
   "name": "express-javascript-template",
-  "version": "1.1.0",
   "license": "MIT",
   "private": true,
   "description": "A template project for using Express with JavaScript and webpack in the Node.js runtime environment.",
   "author": {
-    "name": "brittni watkins",
+    "name": "Brittni Watkins",
     "url": "https://blwatkins.github.io/"
   },
   "homepage": "https://github.com/blwatkins/express-javascript-template#readme",
@@ -30,7 +29,7 @@
     "build:dev:watch": "webpack --mode development --watch",
     "build:check": "npm run build:dev && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "nodemon src/main.mjs",
+    "dev": "nodemon src/main.mjs",
     "start": "npm run build && node src/main.mjs"
   },
   "dependencies": {

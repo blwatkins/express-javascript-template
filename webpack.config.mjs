@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025-2026 Brittni Watkins.
+ * Copyright (c) 2025-2026 Brittni Watkins.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"),
@@ -18,9 +18,13 @@
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const path = require('path');
+import path from 'path';
 
-module.exports = {
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default {
     entry: {
         bundle: './src-client/index.mjs'
     },
