@@ -24,7 +24,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-module.exports = {
+export default {
     entry: {
         bundle: './src-client/index.mjs'
     },
