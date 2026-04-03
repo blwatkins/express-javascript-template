@@ -36,6 +36,19 @@ To learn more about CodeQL configurations, visit the [GitHub CodeQL documentatio
 ![GitHub repo file or directory count](https://img.shields.io/github/directory-file-count/blwatkins/express-javascript-template)
 ![GitHub language count](https://img.shields.io/github/languages/count/blwatkins/express-javascript-template)
 
+## Attributions
+
+### Favicon
+
+The favicon for this template project is a globe emoji, which is used to represent the World Wide Web and the global nature of the internet.
+The favicon was generated from the Globe with Meridians emoji using [Favicon Generator](https://favicon.io/).
+
+This favicon was generated using the following graphics from Twitter Twemoji:
+- Graphics Title: 1f310.svg
+- Graphics Author: Copyright 2020 Twitter, Inc and other contributors (https://github.com/twitter/twemoji)
+- Graphics Source: https://github.com/twitter/twemoji/blob/master/assets/svg/1f310.svg
+- Graphics License: CC-BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+
 ## License
 
 The source code of this project is licensed under the [MIT License](https://opensource.org/license/mit).
